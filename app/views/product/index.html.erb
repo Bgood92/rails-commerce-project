@@ -1,1 +1,5 @@
-<p>Find me in app/views/product/index.html.erb</p>
+<h1>Games</h1>
+
+<%= render partial: 'product',
+           collection: @products,
+           locals: { show_details_link: true } %>

@@ -1,0 +1,24 @@
+<h2> <%= product.name %></h2>
+<p>
+  <strong>Price: </strong>
+  <%= product.price %>
+</p>
+<p>
+  <strong>Genre: </strong>
+  <% product.genres.each do |genre| %>
+    <%= genre.name %><%= ", " unless genre == product.genres.last %>
+  <% end %>
+</p>
+<p>
+  <%= product.stock_quantity %> in stock.
+</p>
+<% if !show_details_link %>
+  <p>
+    <%= product.description %>
+  </p>
+<% end %>
+<% if show_details_link %>
+  <p>
+    <%= link_to 'View Details', product %>
+  </p>
+<% end %>

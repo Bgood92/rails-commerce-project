@@ -1,5 +1,7 @@
 <h1>Games</h1>
 
+<%= paginate @products %>
+
 <%= render partial: 'product',
            collection: @products,
            locals: { show_details_link: true } %>

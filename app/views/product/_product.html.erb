@@ -1,4 +1,7 @@
 <h2> <%= product.name %></h2>
+<% if product.img_url.present? %>
+  <p><%= image_tag product.img_url %></p>
+<% end %>
 <p>
   <strong>Price: </strong>
   <%= product.price %>

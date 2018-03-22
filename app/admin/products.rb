@@ -12,7 +12,7 @@ ActiveAdmin.register Product do
 #   permitted
 # end
 
-  permit_params :name, :price, :stock_quantity, :description, product_genres_attributes: [:id, :product_id, :genre_id, :_destroy]
+  permit_params :name, :price, :stock_quantity, :description, :img_url, product_genres_attributes: [:id, :product_id, :genre_id, :_destroy]
 
   index do
     selectable_column
@@ -21,6 +21,7 @@ ActiveAdmin.register Product do
     column :price
     column :stock_quantity
     column :description
+    column :img_url
     column :categories do |product|
       product.genres.map { |g| g.name }.join(", ").html_safe
     end
@@ -33,6 +34,7 @@ ActiveAdmin.register Product do
       row :price
       row :stock_quantity
       row :description
+      row :img_url
       row :genres do |product|
         product.genres.map { |g| g.name }.join(", ").html_safe
       end
@@ -47,6 +49,7 @@ ActiveAdmin.register Product do
       f.input :price
       f.input :stock_quantity
       f.input :description
+      f.input :img_url
       f.has_many :product_genres, allow_destroy: true do |n_f|
         n_f.input :genre
       end

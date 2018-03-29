@@ -1,0 +1,7 @@
+<h3><%= pluralize(@products.count, 'result') %> for "<%= @genre.name %>"</h3>
+
+<%= paginate @products %>
+
+<%= render partial: 'product',
+           collection: @products,
+           locals: { show_details_link: true } %>

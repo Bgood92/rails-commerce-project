@@ -12,6 +12,17 @@
     <header>
       <h1>e-Gamerse</h1>
     </header>
+
+    <%= form_tag products_search_by_category_path, method: :get do %>
+      <%= select_tag :genre, options_for_select(Genre.all.order(:name).pluck(:name), params[:genre]) %>
+      <%= submit_tag 'Search' %>
+    <% end %>
+    <br>
+    <%= form_tag products_search_path, method: :get do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
+      <%= submit_tag 'Search' %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get 'products/search'
 
   resources :products, only: [:index, :show]
-  resources :customer
+  resources :users
+
   root to: 'products#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config

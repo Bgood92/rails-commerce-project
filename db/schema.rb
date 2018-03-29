@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180329215811) do
+ActiveRecord::Schema.define(version: 20180329231918) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -48,18 +48,6 @@ ActiveRecord::Schema.define(version: 20180329215811) do
     t.decimal "tax_rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "customers", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.string "password"
-    t.integer "province_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "address"
-    t.index ["province_id"], name: "index_customers_on_province_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -122,6 +110,18 @@ ActiveRecord::Schema.define(version: 20180329215811) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "password"
+    t.integer "province_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "address"
+    t.index ["province_id"], name: "index_users_on_province_id"
   end
 
 end

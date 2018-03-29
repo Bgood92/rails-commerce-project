@@ -1,14 +1,15 @@
-class CustomerController < ApplicationController
+class UsersController < ApplicationController
   def index
   end
 
   def show
-  end
-
-  def create
+    @user = User.find(params[:id])
   end
 
   def new
+  end
+
+  def create
   end
 
   def edit
@@ -18,8 +19,5 @@ class CustomerController < ApplicationController
   end
 
   def destroy
-  end
-
-  def login
   end
 end

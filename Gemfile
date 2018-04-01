@@ -37,7 +37,9 @@ gem 'activeadmin'
 gem 'devise'
 gem 'kaminari'
 gem 'carrierwave'
-gem 'clearance', '~> 1.15.1'
+gem 'bootstrap-sass', '~> 3.3.7'
+gem 'jquery-rails'
+gem 'simple_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

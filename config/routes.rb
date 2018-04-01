@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   get 'products/search_by_category'
   get 'products/search'
 
+  get 'signup', to: 'users#new'
+  post 'signup', to: 'users#create'
+
   resources :products, only: [:index, :show]
   resources :users
 

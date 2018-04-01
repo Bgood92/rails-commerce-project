@@ -1,2 +1,19 @@
-<h1>Customers#new</h1>
-<p>Find me in app/views/customers/new.html.erb</p>
+<h1>Sign up</h1>
+
+<%= form_for @user, url: signup_path do |f| %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.submit "Create account" %>
+
+<% end %>
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180401034605) do
+ActiveRecord::Schema.define(version: 20180401183523) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -77,12 +77,12 @@ ActiveRecord::Schema.define(version: 20180401034605) do
   end
 
   create_table "product_genres", force: :cascade do |t|
-    t.integer "products_id"
+    t.integer "product_id"
     t.integer "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["genre_id"], name: "index_product_genres_on_genre_id"
-    t.index ["products_id"], name: "index_product_genres_on_products_id"
+    t.index ["product_id"], name: "index_product_genres_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 20180401034605) do
     t.datetime "updated_at", null: false
     t.string "address"
     t.string "salt"
+    t.string "password_digest"
     t.index ["province_id"], name: "index_users_on_province_id"
   end
 

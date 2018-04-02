@@ -9,20 +9,34 @@
   </head>
 
   <body>
-    <header>
-      <h1>e-Gamerse</h1>
-    </header>
+    <div class="container">
+      <header>
+        <h1><%= link_to 'eGamerse', root_path %></h1>
+      </header>
+      <div class="container">
+        <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <% end %>
+      </div>
 
-    <%= form_tag products_search_by_category_path, method: :get do %>
-      <%= select_tag :genre, options_for_select(Genre.all.order(:name).pluck(:name), params[:genre]) %>
-      <%= submit_tag 'Search' %>
-    <% end %>
-    <br>
-    <%= form_tag products_search_path, method: :get do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
-      <%= submit_tag 'Search' %>
-    <% end %>
+      <% if logged_in? %>
+        <p><%= link_to "Profile", current_user %></p>
+        <p><%= link_to "Log out", logout_path, method: :delete %></p>
+      <% else %>
+        <%= link_to "Log in", login_path %>
+      <% end %>
 
-    <%= yield %>
+      <%= form_tag products_search_by_category_path, method: :get do %>
+        <%= select_tag :genre, options_for_select(Genre.all.order(:name).pluck(:name), params[:genre]) %>
+        <%= submit_tag 'Search' %>
+      <% end %>
+      <br>
+      <%= form_tag products_search_path, method: :get do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
+        <%= submit_tag 'Search' %>
+      <% end %>
+
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -1,4 +1,4 @@
 class Status < ApplicationRecord
-  has_many :orders, dependent: :nullify
+  has_many :orders
   validates :name, presence: true
 end

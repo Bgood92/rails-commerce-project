@@ -39,8 +39,10 @@ gem 'kaminari'
 gem 'carrierwave'
 gem 'bootstrap'
 gem 'jquery-rails'
-gem 'simple_form'
 gem 'bcrypt'
+gem 'slim-rails'
+gem 'font-awesome-sass', '~> 4.6.2'
+gem 'breadcrumbs_on_rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

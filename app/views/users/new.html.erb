@@ -1,39 +1,42 @@
-<div class="container">
+<div class="container" style="width: 75%;">
   <h1 style="text-align: center">Sign up</h1>
-  <%= form_for(@user, url: signup_path) do |f| %>
-    <%= render 'shared/error_messages' %>
+  <div class="form-group">
+    <%= form_for(@user, url: signup_path) do |f| %>
+      <%= render 'shared/error_messages' %>
 
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name, class: "form-control" %>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, class: "form-control" %>
 
-    <br>
+      <br>
 
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name, class: "form-control" %>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, class: "form-control" %>
 
-    <br>
+      <br>
 
-    <%= f.label :province%>
-    <%= f.collection_select :province_id, Province.order(:name), :id, :name, include_blank: true %>
+      <%= f.label :province%>
+      <%= f.collection_select :province_id, Province.order(:name), :id, :name, include_blank: true %>
 
-    <br>
+      <br>
 
-    <%= f.label :email %>
-    <%= f.email_field :email, class: "form-control" %>
+      <%= f.label :email %>
+      <%= f.email_field :email, class: "form-control" %>
 
-    <br>
+      <br>
 
-    <%= f.label :password %>
-    <%= f.password_field :password, class: "form-control" %>
+      <%= f.label :password %>
+      <%= f.password_field :password, class: "form-control" %>
 
-    <br>
+      <br>
 
-    <%= f.label :password_confirmation, 'Confirm Password' %>
-    <%= f.password_field :password_confirmation, class: "form-control" %>
+      <%= f.label :password_confirmation, 'Confirm Password' %>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
 
-    <br>
+      <br>
 
-    <%= f.submit "Create account", class: "btn btn-primary" %>
+      <%= f.submit "Create account", class: "btn btn-primary" %>
 
-  <% end %>
+    <% end %>
+  </div>
+
 </div>

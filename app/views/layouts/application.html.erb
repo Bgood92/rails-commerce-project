@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>CommerceProject</title>
     <%= csrf_meta_tags %>
@@ -9,32 +9,40 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <header>
-        <h1><%= link_to 'eGamerse', root_path %></h1>
+        <div class="jumbotron" style="padding-top: 20px;padding-bottom: 20px">
+          <h1><%= link_to 'eGamerse', root_url, style: "text-decoration:none" %></h1>
+          <p>An online game store catered to all you wonderful geeks!</p>
+
+          <%= form_tag products_search_path, method: :get do %>
+            <div class="input-group">
+              <%= text_field_tag :product, params[:product], placeholder: "Search for products", class: "form-control, col-md-6" %>
+              <%= select_tag :genre, options_for_select(Genre.all.order(:name).pluck(:name).insert(0, "All"), params[:genre]), class: "form-control col-md-2" %>
+              <%= submit_tag 'Search', class: "btn btn-default col-md-1" %><div class="col-md-3"></div>
+            </div>
+          <% end %>
+          <div>
+            <% if logged_in? %>
+              <div>Hello, <%= current_user.first_name %></div>
+              <%= link_to "View Profile", current_user, style: "padding-right: 40px" %>
+              <%= link_to "Log out", logout_path, method: :delete %>
+            <% else %>
+              <%= link_to "Log in", login_path %>
+            <% end %>
+          </div>
+        </div>
+        <div class="container">
+          <% flash.each do |message_type, message| %>
+            <div class="alert alert-<%= message_type %>"><%= message %></div>
+          <% end %>
+        </div>
       </header>
-      <div class="container">
-        <% flash.each do |message_type, message| %>
-          <div class="alert alert-<%= message_type %>"><%= message %></div>
-        <% end %>
+
+      <div style="padding-bottom: 15px">
+        <%= render_breadcrumbs %>
       </div>
 
-      <% if logged_in? %>
-        <p><%= link_to "Profile", current_user %></p>
-        <p><%= link_to "Log out", logout_path, method: :delete %></p>
-      <% else %>
-        <%= link_to "Log in", login_path %>
-      <% end %>
-
-      <%= form_tag products_search_by_category_path, method: :get do %>
-        <%= select_tag :genre, options_for_select(Genre.all.order(:name).pluck(:name), params[:genre]) %>
-        <%= submit_tag 'Search' %>
-      <% end %>
-      <br>
-      <%= form_tag products_search_path, method: :get do %>
-        <%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
-        <%= submit_tag 'Search' %>
-      <% end %>
 
       <%= yield %>
     </div>

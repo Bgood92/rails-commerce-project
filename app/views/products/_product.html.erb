@@ -1,4 +1,9 @@
-<h2> <%= product.name %></h2>
+<% if show_details_link %>
+  <h3> <%= link_to "#{product.name}", product %></h3>
+<% else %>
+  <h3> <%= product.name %></h3>
+<% end %>
+
 <% if product.img_url.present? %>
   <p><%= image_tag product.img_url %></p>
 <% end %>
@@ -20,8 +25,6 @@
     <%= product.description %>
   </p>
 <% end %>
-<% if show_details_link %>
-  <p>
-    <%= link_to 'View Details', product %>
-  </p>
-<% end %>
+
+<!--Using temporarily to simulate what the page would look like with this button-->
+<button>Add to cart</button>
